@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1520786547 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\dfa.cpp
+	"DFA.h"
+
+1520784369 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\dfa.h
+	"Estado.h"
+	"Arista.h"
+	<vector>
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<fstream>
+
+1519917736 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\main.cpp
+	<iostream>
+	"Intermediador.h"
+
+1520488944 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\estado.cpp
+	"Estado.h"
+
+1520488913 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\estado.h
+	<map>
+	<vector>
+	"Arista.h"
+
+1520808356 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\intermediador.cpp
+	"Intermediador.h"
+
+1520786885 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\intermediador.h
+	<iostream>
+	<stdio.h>
+	<vector>
+	"DFA.h"
+	"NFA.h"
+
+1520314163 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\arista.h
+	"Estado.h"
+
+1520313734 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\arista.cpp
+	"Arista.h"
+
+1520783080 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\archivo.h
+	<stdio.h>
+	<stdlib.h>
+	<fstream>
+	<iostream>
+	<string>
+
+1520783457 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\archivo.cpp
+	"Archivo.h"
+
+1520803789 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfa.h
+	"Estado.h"
+	"Arista.h"
+	<vector>
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<fstream>
+
+1520807774 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfa.cpp
+	"NFA.h"
+
