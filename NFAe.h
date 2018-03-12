@@ -1,5 +1,5 @@
-#ifndef NFA_H
-#define NFA_H
+#ifndef NFAE_H
+#define NFAE_H
 
 #include "Estado.h"
 #include "Arista.h"
@@ -9,13 +9,11 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
-class NFA
+class NFAe
 {
-    public:
-        NFA(vector<char> alf, int cantEst, vector<int> estFinales);
-        virtual ~NFA();
+        public:
+        NFAe(vector<char> alf, int cantEst, vector<int> estFinales);
+        virtual ~NFAe();
 
         void setTransiciones();
         void convertir(char * str);
@@ -31,7 +29,6 @@ class NFA
         int cantEstados;
         Estado * estadoInicial;
 
-
 };
 
-#endif // NFA_H
+#endif // NFAE_H

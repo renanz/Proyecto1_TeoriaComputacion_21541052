@@ -40,6 +40,12 @@
 		<Unit filename="Estado.h" />
 		<Unit filename="Intermediador.cpp" />
 		<Unit filename="Intermediador.h" />
+		<Unit filename="NFA.cpp" />
+		<Unit filename="NFA.h" />
+		<Unit filename="NFAe.cpp" />
+		<Unit filename="NFAe.h" />
+		<Unit filename="RandomTest.cpp" />
+		<Unit filename="RandomTest.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

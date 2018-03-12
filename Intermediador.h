@@ -6,6 +6,7 @@
 #include <vector>
 #include "DFA.h"
 #include "NFA.h"
+#include "NFAe.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ class Intermediador
         int eleccion;
         DFA * _dfa;
         NFA * _nfa;
+        NFAe * _nfae;
 
 };
 

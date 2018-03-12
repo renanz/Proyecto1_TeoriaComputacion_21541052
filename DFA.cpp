@@ -32,6 +32,7 @@ DFA::~DFA()
 
 void DFA::setTransiciones()
 {
+    cout << "\n----------------------\n" <<endl;
     cout<<"\nEstados: ";
     for (int i=0; i< estados.size(); i++)
     {
@@ -65,6 +66,7 @@ void DFA::setTransiciones()
         strcpy(cstr,str.c_str());
         resolver(cstr);
     }
+    file.close();
 }
 
 
@@ -85,7 +87,7 @@ void DFA::resolver(char * str)
         }
     }
     if(estadoTemp->isEstadoFinal())
-        cout<<str << "\t\tes aceptable"<<endl;
+        cout<<str << "\t\t\tes aceptado"<<endl;
     else
-        cout<<str << "\t\tno aceptable " <<endl;
+        cout<<str << "\t\t\tno es aceptado" <<endl;
 }

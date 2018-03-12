@@ -1,6 +1,6 @@
-#include "NFA.h"
+#include "NFAe.h"
 
-NFA::NFA(vector<char> alf, int cantEst, vector<int> estFinales)
+NFAe::NFAe(vector<char> alf, int cantEst, vector<int> estFinales)
 {
     this->alfabeto = alf;
     this->cantEstados = cantEst;
@@ -23,11 +23,11 @@ NFA::NFA(vector<char> alf, int cantEst, vector<int> estFinales)
     this->estadoInicial = estados[0];
 }
 
-NFA::~NFA()
+NFAe::~NFAe()
 {
     //dtor
 }
-void NFA::setTransiciones()
+void NFAe::setTransiciones()
 {
     cout<<"Estados: ";
     for (int i=0; i< estados.size(); i++)
@@ -41,16 +41,17 @@ void NFA::setTransiciones()
         printf("Transiciones con el estado %d.\n",temp->getNombre());
         for (int j=0; j<alfabeto.size(); j++)
         {
+            char alf = (alfabeto[j] == '~') ? 'E' : alfabeto[j];
             int choice;
-            printf("El estado %d tiene transicion con'%c'?\n\t1.-Si\n\t2.-No\nSu eleccion: ",temp->getNombre(),alfabeto[j]);
+            printf("El estado %d tiene transicion con'%c'?\n\t1.-Si\n\t2.-No\nSu eleccion: ",temp->getNombre(),alf);
             cin >>choice;
             if(choice == 1)
             {
-                printf("Cuantas trancisiones tiene el estado %d con'%c'? Su eleccion: ",temp->getNombre(),alfabeto[j]);
+                printf("Cuantas trancisiones tiene el estado %d con'%c'? Su eleccion: ",temp->getNombre(),alf);
                 cin >> choice;
                 for(int k=0; k<choice; k++)
                 {
-                    printf("El estado %d con el caracter '%c' lleva al estado: ",temp->getNombre(),alfabeto[j]);
+                    printf("El estado %d con el caracter '%c' lleva al estado: ",temp->getNombre(),alf);
                     int opc;
                     cin >> opc;
                     temp->addAristas(alfabeto[j],estados[opc]);
@@ -102,7 +103,7 @@ void NFA::setTransiciones()
 //    resolver("abaa");//sin camino
 }
 
-void NFA::convertir(char* str)
+void NFAe::convertir(char* str)
 {
     Estado * estadoTemp = estadoInicial;
     vector<Arista *> aristasTemp = estadoTemp->getAristas();
@@ -119,9 +120,9 @@ void NFA::convertir(char* str)
 //0 - estado aceptacion
 //1 - estado no aceptacion
 //3 - se quedo sin camino
-int NFA::convertir(Estado * estado, vector<Arista *> aristas, char* cadena, int indexAristas, int indexCadena)
+int NFAe::convertir(Estado * estado, vector<Arista *> aristas, char* cadena, int indexAristas, int indexCadena)
 {
-    //printf("Cadena: %s, Estado: %d, arista[%d] '%c'->%d, indexCadena%d '%c'\n",cadena,estado->getNombre(),indexAristas,aristas[indexAristas]->getCaracter(),aristas[indexAristas]->getEstado()->getNombre(),indexCadena,cadena[indexCadena]);
+    printf("Cadena: %s, Estado: %d, arista[%d] '%c'->%d, indexCadena%d '%c'\n",cadena,estado->getNombre(),indexAristas,aristas[indexAristas]->getCaracter(),aristas[indexAristas]->getEstado()->getNombre(),indexCadena,cadena[indexCadena]);
     if(strlen(cadena) == indexCadena)
     {
         if(estado->isEstadoFinal())
@@ -132,15 +133,19 @@ int NFA::convertir(Estado * estado, vector<Arista *> aristas, char* cadena, int 
     for(int i=indexAristas; i<aristas.size(); i++)
     {
         int sePudo = 10;
-        if(aristas[i]->getCaracter() == cadena[indexCadena])
+        if(aristas[i]->getCaracter() == '~')
         {
-            sePudo = convertir(aristas[i]->getEstado(),aristas[i]->getEstado()->getAristas(),cadena,0,(indexCadena+1));
-            if(sePudo == 3)
-                continue;
-            else if(sePudo == 1)
-                continue;
-            else if(sePudo == 0)
-                return sePudo;
+            sePudo = convertir(aristas[i]->getEstado(),aristas[i]->getEstado()->getAristas(),cadena,0,indexCadena);
+            if(aristas[i]->getCaracter() == cadena[indexCadena])
+            {
+                sePudo = convertir(aristas[i]->getEstado(),aristas[i]->getEstado()->getAristas(),cadena,0,(indexCadena+1));
+                if(sePudo == 3)
+                    continue;
+                else if(sePudo == 1)
+                    continue;
+                else if(sePudo == 0)
+                    return sePudo;
+            }
         }
     }
     return 3;

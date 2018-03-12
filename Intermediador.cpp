@@ -13,107 +13,86 @@ Intermediador::~Intermediador()
 
 void Intermediador::menu()
 {
-    cout << "Bienvenido\n\n" <<endl;
+    cout << "Bienvenido\n\nPara salir presione el numero 9" <<endl;
     cout << "----------------------" <<endl;
 
     cout<< "Desea resolver un:\n";
     cout<< "\t1. DFA\n";
     cout<< "\t2. NFA\n";
+    cout<< "\t3. NFAe\n";
     cout<< "Su eleccion: ";
     cin >> eleccion;
-    while (eleccion != 1 || eleccion != 2)
+    while (eleccion != 1 || eleccion != 2 || eleccion != 3)
     {
-        if(eleccion==1 || eleccion==2)
+        if(eleccion==1 || eleccion==2 || eleccion == 3)
             break;
-        cout<< "Por favor elija 1 o 2: ";
+        cout<< "Por favor elija 1, 2 o 3: ";
         cin >> eleccion;
     }
-
+    cout << "\n----------------------\n\n" <<endl;
+    //Alfabeto
+    vector<char> alfabeto;
+    cout << "Favor ingrese cuantos elementos en el alfabeto: ";
+    int cantElemAlf;
+    cin >> cantElemAlf;
+    for (int i=0; i<cantElemAlf; i++){
+        printf("\tCaracter%d:",i);
+        char caracter;
+        cin >> caracter;
+        alfabeto.push_back(caracter);
+    }
+    //Estados
+    cout << "Favor ingrese la cantidad de estados: ";
+    int cantEstados;
+    cin >> cantEstados;
+    cout<<"\tEstados: ";
+    for (int i=0; i< cantEstados; i++)
+    {
+        cout<<i;
+        (i+1 < cantEstados) ? cout<<"-" : false;
+    }
+    cout<<endl;
+    //Estados Finales
+    vector<int> estadosFinales;
+    cout << "Favor ingrese cuantos estados finales hay: ";
+    int cantEstadosFinales;
+    cin >> cantEstadosFinales;
+    for (int i=0; i<cantEstadosFinales; i++){
+        printf("Estado Final%d: ",i);
+        int estadoFinal;
+        cin >> estadoFinal;
+        estadosFinales.push_back(estadoFinal);
+    }
     switch (eleccion)
     {
         case 1:
             {
-                //Alfabeto
-                vector<char> alfabeto;
-                cout << "Favor ingrese cuantos elementos en el alfabeto: ";
-                int cantElemAlf;
-                cin >> cantElemAlf;
-                for (int i=0; i<cantElemAlf; i++){
-                    printf("\tCaracter%d:",i);
-                    char caracter;
-                    cin >> caracter;
-                    alfabeto.push_back(caracter);
-                }
-                //Estados
-                cout << "Favor ingrese la cantidad de estados: ";
-                int cantEstados;
-                cin >> cantEstados;
-                cout<<"\tEstados: ";
-                for (int i=0; i< cantEstados; i++)
-                {
-                    cout<<i;
-                    (i+1 < cantEstados) ? cout<<"-" : false;
-                }
-                cout<<endl;
-                //Estados Finales
-                vector<int> estadosFinales;
-                cout << "Favor ingrese cuantos estados finales hay: ";
-                int cantEstadosFinales;
-                cin >> cantEstadosFinales;
-                for (int i=0; i<cantEstadosFinales; i++){
-                    printf("Estado Final%d: ",i);
-                    int estadoFinal;
-                    cin >> estadoFinal;
-                    estadosFinales.push_back(estadoFinal);
-                }
                 _dfa = new DFA(alfabeto, cantEstados, estadosFinales);
                 _dfa->setTransiciones();
                 break;
             }
         case 2:
             {
-                //Alfabeto
-                vector<char> alfabeto;
-                cout << "Favor ingrese cuantos elementos en el alfabeto: ";
-                int cantElemAlf;
-                cin >> cantElemAlf;
-                for (int i=0; i<cantElemAlf; i++){
-                    printf("Caracter%d:",i);
-                    char caracter;
-                    cin >> caracter;
-                    alfabeto.push_back(caracter);
-                }
-                //Estados
-                cout << "Favor ingrese la cantidad de estados: ";
-                int cantEstados;
-                cin >> cantEstados;
-                cout<<"Estados: ";
-                for (int i=0; i< cantEstados; i++)
-                {
-                    printf("%d-",i);
-                }
-                cout<<endl;
-                //Estados Finales
-                vector<int> estadosFinales;
-                cout << "Favor ingrese cuantos estados finales hay: ";
-                int cantEstadosFinales;
-                cin >> cantEstadosFinales;
-                for (int i=0; i<cantEstadosFinales; i++){
-                    printf("Estado Final%d: ",i);
-                    int estadoFinal;
-                    cin >> estadoFinal;
-                    estadosFinales.push_back(estadoFinal);
-                    cout<<"estfinal en i: "<<estadosFinales[i]<<endl;
-                }
-
-                cout<<"cant estfinal: "<<estadosFinales.size()<<endl;
                 _nfa = new NFA(alfabeto, cantEstados, estadosFinales);
                 _nfa->setTransiciones();
                 break;
             }
+        case 3:
+            {
+                alfabeto.insert(alfabeto.begin(),'~');
+                _nfae = new NFAe(alfabeto, cantEstados, estadosFinales);
+                _nfae->setTransiciones();
+                break;
+            }
         default: break;
     }
+    cout<< "Desea resolver otro automata?\n\t1.- Si\n\t2.- No\n\tSu eleccion:";
+    cin >> eleccion;
+    cout << "-------------------------\n\n\n" <<endl;
+    if(eleccion == 1)
+        menu();
 }
+
 void Intermediador::test()
 {
     cout<<"\ntest\n";
