@@ -103,6 +103,61 @@ void NFAe::setTransiciones()
 //    resolver("abaa");//sin camino
 }
 
+void NFAe::convertir()
+{
+
+    DFA * _dfa = new DFA(alfabeto,cantEstados,estadosFinales);
+    _dfa->setTransiciones();
+
+    delete _dfa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int NFAe::convertir(Estado * estado, vector<Arista *> aristas, char* cadena, int indexAristas, int indexCadena)
+{
+    //printf("Cadena: %s, Estado: %d, arista[%d] '%c'->%d, indexCadena%d '%c'\n",cadena,estado->getNombre(),indexAristas,aristas[indexAristas]->getCaracter(),aristas[indexAristas]->getEstado()->getNombre(),indexCadena,cadena[indexCadena]);
+    if(strlen(cadena) == indexCadena)
+    {
+        if(estado->isEstadoFinal())
+            return 0;
+        else
+            return 1;
+    }
+    for(int i=indexAristas; i<aristas.size(); i++)
+    {
+        int sePudo = 10;
+        if(aristas[i]->getCaracter() == cadena[indexCadena])
+        {
+            sePudo = convertir(aristas[i]->getEstado(),aristas[i]->getEstado()->getAristas(),cadena,0,(indexCadena+1));
+            if(sePudo == 3)
+                continue;
+            else if(sePudo == 1)
+                continue;
+            else if(sePudo == 0)
+                return sePudo;
+        }
+        else if(aristas[i]->getCaracter() == '~')
+        {
+            sePudo = convertir(aristas[i]->getEstado(),aristas[i]->getEstado()->getAristas(),cadena,0,indexCadena);
+        }
+    }
+    return 3;
+}
+
+
 void NFAe::convertir(char* str)
 {
     Estado * estadoTemp = estadoInicial;
@@ -120,33 +175,4 @@ void NFAe::convertir(char* str)
 //0 - estado aceptacion
 //1 - estado no aceptacion
 //3 - se quedo sin camino
-int NFAe::convertir(Estado * estado, vector<Arista *> aristas, char* cadena, int indexAristas, int indexCadena)
-{
-    printf("Cadena: %s, Estado: %d, arista[%d] '%c'->%d, indexCadena%d '%c'\n",cadena,estado->getNombre(),indexAristas,aristas[indexAristas]->getCaracter(),aristas[indexAristas]->getEstado()->getNombre(),indexCadena,cadena[indexCadena]);
-    if(strlen(cadena) == indexCadena)
-    {
-        if(estado->isEstadoFinal())
-            return 0;
-        else
-            return 1;
-    }
-    for(int i=indexAristas; i<aristas.size(); i++)
-    {
-        int sePudo = 10;
-        if(aristas[i]->getCaracter() == '~')
-        {
-            sePudo = convertir(aristas[i]->getEstado(),aristas[i]->getEstado()->getAristas(),cadena,0,indexCadena);
-            if(aristas[i]->getCaracter() == cadena[indexCadena])
-            {
-                sePudo = convertir(aristas[i]->getEstado(),aristas[i]->getEstado()->getAristas(),cadena,0,(indexCadena+1));
-                if(sePudo == 3)
-                    continue;
-                else if(sePudo == 1)
-                    continue;
-                else if(sePudo == 0)
-                    return sePudo;
-            }
-        }
-    }
-    return 3;
-}
+

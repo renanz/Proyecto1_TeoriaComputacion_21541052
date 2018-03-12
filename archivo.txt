@@ -1,5 +1,6 @@
 ~
 ~b~baab~~~bab~b
 ~a
+~ab
 ~aabbaa
 aabbbaaa

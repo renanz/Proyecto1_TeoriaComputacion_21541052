@@ -11,8 +11,7 @@ RandomTest::RandomTest()
     for (int i=0; i<WORD_COUNT; i++)
     {
         int length = rand()%MAX_LENGTH_STRING;
-        //string cadena = "";
-        string cadena = (length == 0) ? "~" : "~";
+        string cadena = (EPSILON) ? ((length == 0) ? "~" : "~") : "";
         for (int j=0; j<length; j++)
         {
             int car = rand()%caracteres.size();

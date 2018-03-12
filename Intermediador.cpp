@@ -32,7 +32,7 @@ void Intermediador::menu()
     cout << "\n----------------------\n\n" <<endl;
     //Alfabeto
     vector<char> alfabeto;
-    cout << "Favor ingrese cuantos elementos en el alfabeto: ";
+    (eleccion == 3) ? cout << "Favor ingrese cuantos elementos en el alfabeto (No necesita ingresar caracter para Epsilon): ": cout << "Favor ingrese cuantos elementos en el alfabeto: ";
     int cantElemAlf;
     cin >> cantElemAlf;
     for (int i=0; i<cantElemAlf; i++){

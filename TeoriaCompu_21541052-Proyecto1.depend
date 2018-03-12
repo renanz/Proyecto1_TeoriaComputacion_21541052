@@ -24,7 +24,7 @@
 	<vector>
 	"Arista.h"
 
-1520816417 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\intermediador.cpp
+1520829560 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\intermediador.cpp
 	"Intermediador.h"
 
 1520814794 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\intermediador.h
@@ -51,9 +51,10 @@
 1520783457 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\archivo.cpp
 	"Archivo.h"
 
-1520814670 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfa.h
+1520830472 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfa.h
 	"Estado.h"
 	"Arista.h"
+	"DFA.h"
 	<vector>
 	<stdio.h>
 	<string.h>
@@ -63,22 +64,23 @@
 1520814729 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfa.cpp
 	"NFA.h"
 
-1520816384 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\randomtest.h
+1520830460 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\randomtest.h
 	<stdio.h>
 	<stdlib.h>
 	<vector>
 	<fstream>
 	<iostream>
 
-1520815764 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\randomtest.cpp
+1520830070 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\randomtest.cpp
 	"RandomTest.h"
 
-1520816373 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfae.cpp
+1520829408 source:c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfae.cpp
 	"NFAe.h"
 
-1520814768 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfae.h
+1520830475 c:\users\renan\desktop\teoriacompu\teoriacompu_21541052-proyecto1\nfae.h
 	"Estado.h"
 	"Arista.h"
+	"DFA.h"
 	<vector>
 	<stdio.h>
 	<string.h>

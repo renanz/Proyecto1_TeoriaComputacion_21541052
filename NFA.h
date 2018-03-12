@@ -3,6 +3,7 @@
 
 #include "Estado.h"
 #include "Arista.h"
+#include "DFA.h"
 #include <vector>
 #include <stdio.h>
 #include <string.h>
@@ -30,6 +31,7 @@ class NFA
         vector<Estado *> estados;
         int cantEstados;
         Estado * estadoInicial;
+        void convertir();
 
 
 };

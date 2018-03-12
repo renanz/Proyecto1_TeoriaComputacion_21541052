@@ -10,7 +10,8 @@
 using namespace std;
 
 #define MAX_LENGTH_STRING 20
-#define WORD_COUNT 5
+#define WORD_COUNT 100
+#define EPSILON false
 
 
 class RandomTest

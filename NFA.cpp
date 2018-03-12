@@ -102,23 +102,18 @@ void NFA::setTransiciones()
 //    resolver("abaa");//sin camino
 }
 
-void NFA::convertir(char* str)
+void NFA::convertir()
 {
-    Estado * estadoTemp = estadoInicial;
-    vector<Arista *> aristasTemp = estadoTemp->getAristas();
-    int res = convertir(estadoTemp,aristasTemp,str,0,0);
-    if(res == 0)
-        cout<<str << "\t\t\tes aceptado"<<endl;
-    else if(res == 1)
-        cout<<str << "\t\t\t no es aceptado"<<endl;
-    else if(res == 3)
-        cout<<str << "\t\t\t no es aceptado"<<endl;
+
+    DFA * _dfa = new DFA(alfabeto,cantEstados,estadosFinales);
+    _dfa->setTransiciones();
+
+
+    delete _dfa;
+
 }
 
 
-//0 - estado aceptacion
-//1 - estado no aceptacion
-//3 - se quedo sin camino
 int NFA::convertir(Estado * estado, vector<Arista *> aristas, char* cadena, int indexAristas, int indexCadena)
 {
     //printf("Cadena: %s, Estado: %d, arista[%d] '%c'->%d, indexCadena%d '%c'\n",cadena,estado->getNombre(),indexAristas,aristas[indexAristas]->getCaracter(),aristas[indexAristas]->getEstado()->getNombre(),indexCadena,cadena[indexCadena]);
@@ -145,3 +140,40 @@ int NFA::convertir(Estado * estado, vector<Arista *> aristas, char* cadena, int 
     }
     return 3;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void NFA::convertir(char* str)
+{
+    Estado * estadoTemp = estadoInicial;
+    vector<Arista *> aristasTemp = estadoTemp->getAristas();
+    int res = convertir(estadoTemp,aristasTemp,str,0,0);
+    if(res == 0)
+        cout<<str << "\t\t\tes aceptado"<<endl;
+    else if(res == 1)
+        cout<<str << "\t\t\t no es aceptado"<<endl;
+    else if(res == 3)
+        cout<<str << "\t\t\t no es aceptado"<<endl;
+}
+
+//0 - estado aceptacion
+//1 - estado no aceptacion
+//3 - se quedo sin camino
